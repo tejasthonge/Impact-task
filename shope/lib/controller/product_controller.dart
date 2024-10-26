@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import '../consonants/index.dart';
+import '../constant/index.dart';
 import '../model/index.dart';
 
 class ProductController extends GetxController {
