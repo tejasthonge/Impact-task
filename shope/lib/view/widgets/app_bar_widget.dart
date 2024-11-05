@@ -12,8 +12,8 @@ AppBar getAppBar(ProductController productController) {
       foregroundColor: Colors.white,
       backgroundColor: const Color.fromARGB(255, 28, 138, 32),
       clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder( 
-        borderRadius: BorderRadius.circular(30.0),
+      shape: const RoundedRectangleBorder( 
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
       ),
     );
   }

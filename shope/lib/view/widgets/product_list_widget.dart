@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shope/controller/product_controller.dart';
@@ -56,12 +57,14 @@ class ProductsBodyWidget extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      product.image,
+                    child:  CachedNetworkImage(
+                      imageUrl:  product.image,
+                     placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
                       fit: BoxFit.cover, 
                       width: double.infinity,
                       height: double.infinity, 
                     ),
+                    
                   ),
                   Positioned(
                     top: 195,

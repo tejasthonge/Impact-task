@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,10 @@ class _ProductDeatilPageState extends State<ProductDeatilPage> {
             children: [
               Stack(
                 children: [
-                  getBanner(),
+                  SizedBox(
+                    height: 600,
+                    width: double.infinity,
+                    child: getBanner()),
                   getTopBar(),
                   getRating(),
                 ],
@@ -71,7 +75,7 @@ class _ProductDeatilPageState extends State<ProductDeatilPage> {
                 ),
               ),
               const  Divider(
-                color: const Color.fromARGB(105, 239, 222, 222),
+                color:  Color.fromARGB(105, 239, 222, 222),
                 thickness: 9,
               ),
 
@@ -437,13 +441,17 @@ class _ProductDeatilPageState extends State<ProductDeatilPage> {
     );
   }
 
-  Image getBanner() {
-    return Image.network(
-      productDetail.images[0], //have only one image
-      fit: BoxFit.cover,
+  CachedNetworkImage getBanner() {
+   
+    return CachedNetworkImage(
+      height: 500,
       width: double.infinity,
-      // height: 200,
+      imageUrl: productDetail.images[0], 
+      fit: BoxFit.cover,
+      placeholder: (context, url) =>  const Center(child:   CircularProgressIndicator()),
+       errorWidget: (context, url, error) => Icon(Icons.error),
     );
+   
   }
 
   Container getTopBar() {
